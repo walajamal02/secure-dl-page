@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>JaiClub Navigator Pro · Download</title>
+
+        <style>
+            /* ============================================================
+               ROOT VARIABLES
+               ============================================================ */
+            :root {
+                --light-bg_white: #22224b;
+                --main_gradient: linear-gradient(90deg, #fb8466 0%, #bd5bd4 33%, #7473fa 66%, #53b2fa 100%);
+                --main_gradient_diag: linear-gradient(135deg, #fb8466 0%, #bd5bd4 33%, #7473fa 66%, #53b2fa 100%);
+                --card-bg: #1a1a3a;
+                --text-white: #ffffff;
+                --text-muted: rgba(255, 255, 255, 0.45);
+                --border-subtle: rgba(255, 255, 255, 0.06);
+                --glow-radius: 60px;
+            }
+
+            /* ---------- RESET ---------- */
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--light-bg_white);
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+                padding: 1.5rem;
+                position: relative;
+                overflow-x: hidden;
+            }
+
+            /* ---------- BACKGROUND GLOW ORBS ---------- */
+            body::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                z-index: 0;
+                background:
+                    radial-gradient(circle at 10% 20%, rgba(251, 132, 102, 0.10) 0%, transparent 55%),
+                    radial-gradient(circle at 90% 80%, rgba(189, 91, 212, 0.10) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 70%, rgba(116, 115, 250, 0.07) 0%, transparent 45%),
+                    radial-gradient(circle at 70% 30%, rgba(83, 178, 250, 0.08) 0%, transparent 40%);
+                pointer-events: none;
+            }
+
+            /* ---------- CARD ---------- */
+            .card {
+                position: relative;
+                z-index: 1;
+                max-width: 500px;
+                width: 100%;
+                background: var(--card-bg);
+                border-radius: 44px;
+                padding: 2.8rem 2.2rem 3rem;
+                box-shadow:
+                    0 40px 100px rgba(0, 0, 0, 0.7),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.04);
+                text-align: center;
+                transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+                backdrop-filter: blur(4px);
+            }
+
+            .card:hover {
+                transform: translateY(-4px);
+            }
+
+            /* ============================================================
+               SHINING BORDER RING  (gradient conic)
+               ============================================================ */
+            .card::before {
+                content: '';
+                position: absolute;
+                inset: -2px;
+                border-radius: 46px;
+                padding: 2px;
+                background: conic-gradient(from 0deg,
+                        #fb8466 0%,
+                        #bd5bd4 20%,
+                        #7473fa 40%,
+                        #53b2fa 60%,
+                        #7473fa 80%,
+                        #bd5bd4 90%,
+                        #fb8466 100%);
+                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+                opacity: 0;
+                animation: spinBorder 6s linear infinite;
+                pointer-events: none;
+                transition: opacity 0.6s ease;
+            }
+
+            .card:hover::before {
+                opacity: 1;
+            }
+
+            @keyframes spinBorder {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            /* ============================================================
+               SHIMMER OVERLAY  (gradient sweep)
+               ============================================================ */
+            .card::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 44px;
+                background: var(--main_gradient_diag);
+                opacity: 0;
+                transition: opacity 0.6s ease;
+                pointer-events: none;
+                mix-blend-mode: overlay;
+                -webkit-mask: radial-gradient(circle at 30% 40%, black 10%, transparent 70%);
+                mask: radial-gradient(circle at 30% 40%, black 10%, transparent 70%);
+            }
+
+            .card:hover::after {
+                opacity: 0.10;
+            }
+
+            /* ============================================================
+               SPARKLE DOTS  (floating)
+               ============================================================ */
+            .sparkle {
+                position: absolute;
+                border-radius: 50%;
+                pointer-events: none;
+                filter: blur(1.5px);
+                opacity: 0;
+                animation: sparkleFloat 4.5s ease-in-out infinite;
+            }
+
+            .sparkle:nth-child(1) {
+                top: 6%;
+                left: 10%;
+                width: 8px;
+                height: 8px;
+                background: #fb8466;
+                box-shadow: 0 0 20px #fb8466;
+                animation-delay: 0s;
+            }
+            .sparkle:nth-child(2) {
+                top: 14%;
+                right: 8%;
+                width: 6px;
+                height: 6px;
+                background: #bd5bd4;
+                box-shadow: 0 0 20px #bd5bd4;
+                animation-delay: 1s;
+            }
+            .sparkle:nth-child(3) {
+                bottom: 18%;
+                left: 6%;
+                width: 7px;
+                height: 7px;
+                background: #7473fa;
+                box-shadow: 0 0 24px #7473fa;
+                animation-delay: 2.2s;
+            }
+            .sparkle:nth-child(4) {
+                bottom: 10%;
+                right: 10%;
+                width: 9px;
+                height: 9px;
+                background: #53b2fa;
+                box-shadow: 0 0 28px #53b2fa;
+                animation-delay: 3.4s;
+            }
+            .sparkle:nth-child(5) {
+                top: 48%;
+                left: 2%;
+                width: 5px;
+                height: 5px;
+                background: #fb8466;
+                box-shadow: 0 0 16px #fb8466;
+                animation-delay: 0.6s;
+            }
+            .sparkle:nth-child(6) {
+                top: 38%;
+                right: 2%;
+                width: 6px;
+                height: 6px;
+                background: #53b2fa;
+                box-shadow: 0 0 20px #53b2fa;
+                animation-delay: 1.8s;
+            }
+
+            @keyframes sparkleFloat {
+                0% {
+                    opacity: 0;
+                    transform: translateY(0) scale(0.4);
+                }
+                30% {
+                    opacity: 1;
+                    transform: translateY(-16px) scale(1);
+                }
+                70% {
+                    opacity: 0.8;
+                    transform: translateY(-32px) scale(1.1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-48px) scale(0.5);
+                }
+            }
+
+            /* ============================================================
+               LOGO
+               ============================================================ */
+            .logo-wrap {
+                position: relative;
+                display: inline-block;
+                margin-bottom: 1.4rem;
+            }
+
+            .logo-wrap img {
+                display: block;
+                width: 100px;
+                height: 100px;
+                border-radius: 30px;
+                object-fit: contain;
+                background: #12122b;
+                padding: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                box-shadow:
+                    0 16px 48px rgba(0, 0, 0, 0.6),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+                transition: box-shadow 0.4s ease, transform 0.4s ease;
+            }
+
+            .logo-wrap img:hover {
+                transform: scale(1.03);
+                box-shadow:
+                    0 20px 64px rgba(0, 0, 0, 0.8),
+                    0 0 60px rgba(116, 115, 250, 0.10),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+            }
+
+            /* gradient glow ring around logo */
+            .logo-wrap::after {
+                content: '';
+                position: absolute;
+                inset: -6px;
+                border-radius: 36px;
+                background: var(--main_gradient_diag);
+                opacity: 0.15;
+                filter: blur(8px);
+                z-index: -1;
+                transition: opacity 0.5s ease, filter 0.5s ease;
+                pointer-events: none;
+            }
+
+            .logo-wrap:hover::after {
+                opacity: 0.35;
+                filter: blur(12px);
+            }
+
+            /* ============================================================
+               APP NAME  (gradient text)
+               ============================================================ */
+            .app-name {
+                font-size: 2.2rem;
+                font-weight: 800;
+                letter-spacing: -0.02em;
+                line-height: 1.15;
+                margin-bottom: 0.1rem;
+                background: var(--main_gradient);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-shadow: none;
+                filter: drop-shadow(0 0 30px rgba(116, 115, 250, 0.10));
+            }
+
+            /* ============================================================
+               SUBTITLE
+               ============================================================ */
+            .subtitle {
+                font-size: 0.72rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.22em;
+                color: var(--text-muted);
+                margin-bottom: 1.8rem;
+                padding-bottom: 1.2rem;
+                border-bottom: 1px solid var(--border-subtle);
+                display: inline-block;
+            }
+
+            /* ============================================================
+               INFO GRID
+               ============================================================ */
+            .info-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 0.6rem;
+                margin: 1.8rem 0 2.2rem;
+            }
+
+            .info-item {
+                background: rgba(255, 255, 255, 0.02);
+                border-radius: 18px;
+                padding: 1rem 0.3rem;
+                border: 1px solid var(--border-subtle);
+                transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .info-item:hover {
+                background: rgba(255, 255, 255, 0.04);
+                border-color: rgba(255, 255, 255, 0.08);
+                box-shadow: 0 0 30px rgba(116, 115, 250, 0.04);
+            }
+
+            .info-label {
+                font-size: 0.5rem;
+                text-transform: uppercase;
+                letter-spacing: 0.14em;
+                color: rgba(255, 255, 255, 0.2);
+                font-weight: 700;
+                display: block;
+                margin-bottom: 0.25rem;
+            }
+
+            .info-value {
+                font-size: 1rem;
+                font-weight: 700;
+                color: #ffffff;
+                letter-spacing: -0.01em;
+            }
+
+            /* secure badge */
+            .secure-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                background: rgba(255, 255, 255, 0.04);
+                padding: 2px 12px 2px 8px;
+                border-radius: 40px;
+                font-size: 0.6rem;
+                font-weight: 600;
+                color: rgba(255, 255, 255, 0.75);
+                border: 1px solid rgba(255, 255, 255, 0.04);
+                backdrop-filter: blur(2px);
+            }
+
+            .secure-badge svg {
+                width: 13px;
+                height: 13px;
+                fill: none;
+                stroke: #7473fa;
+                stroke-width: 2.2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+
+            /* ============================================================
+               SIZE BLOCK
+               ============================================================ */
+            .size-block {
+                margin: 1.4rem 0 2.2rem;
+            }
+
+            .size-number {
+                font-size: 3.4rem;
+                font-weight: 800;
+                background: var(--main_gradient);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                line-height: 1;
+                letter-spacing: -0.04em;
+                filter: drop-shadow(0 0 40px rgba(116, 115, 250, 0.10));
+            }
+
+            .size-number small {
+                font-size: 1.3rem;
+                font-weight: 600;
+                color: rgba(255, 255, 255, 0.25);
+                -webkit-text-fill-color: rgba(255, 255, 255, 0.25);
+                margin-left: 4px;
+            }
+
+            .size-label {
+                font-size: 0.6rem;
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                color: rgba(255, 255, 255, 0.12);
+                margin-top: 0.2rem;
+                font-weight: 500;
+            }
+
+            /* ============================================================
+               DOWNLOAD BUTTON  (gradient background + shine)
+               ============================================================ */
+            .download-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                width: 100%;
+                padding: 1.2rem 2rem;
+                background: var(--main_gradient);
+                color: #ffffff;
+                font-size: 1.1rem;
+                font-weight: 700;
+                border: none;
+                border-radius: 60px;
+                cursor: pointer;
+                text-decoration: none;
+                transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+                position: relative;
+                overflow: hidden;
+                box-shadow:
+                    0 0 0 1px rgba(255, 255, 255, 0.06),
+                    0 8px 40px rgba(0, 0, 0, 0.5),
+                    0 0 60px rgba(116, 115, 250, 0.08);
+                letter-spacing: 0.01em;
+            }
+
+            .download-btn:hover {
+                transform: scale(1.02) translateY(-3px);
+                box-shadow:
+                    0 0 0 1px rgba(255, 255, 255, 0.10),
+                    0 16px 64px rgba(0, 0, 0, 0.7),
+                    0 0 80px rgba(116, 115, 250, 0.15);
+            }
+
+            .download-btn:active {
+                transform: scale(0.97) translateY(0);
+            }
+
+            .download-btn svg {
+                width: 22px;
+                height: 22px;
+                fill: none;
+                stroke: #ffffff;
+                stroke-width: 2.2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                flex-shrink: 0;
+                transition: transform 0.3s ease;
+            }
+
+            .download-btn:hover svg {
+                transform: translateY(2px);
+            }
+
+            /* shine sweep on button */
+            .download-btn::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -60%;
+                width: 50%;
+                height: 200%;
+                background: linear-gradient(90deg,
+                        transparent 0%,
+                        rgba(255, 255, 255, 0.15) 50%,
+                        transparent 100%);
+                transform: rotate(25deg);
+                pointer-events: none;
+                animation: btnShine 4s ease-in-out infinite;
+            }
+
+            @keyframes btnShine {
+                0% {
+                    left: -60%;
+                }
+                60% {
+                    left: 120%;
+                }
+                100% {
+                    left: 120%;
+                }
+            }
+
+            /* subtle overlay on button */
+            .download-btn::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(135deg,
+                        rgba(255, 255, 255, 0.15) 0%,
+                        transparent 40%,
+                        transparent 60%,
+                        rgba(255, 255, 255, 0.05) 100%);
+                pointer-events: none;
+                border-radius: 60px;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            }
+
+            .download-btn:hover::after {
+                opacity: 1;
+            }
+
+            /* ============================================================
+               FOOTER
+               ============================================================ */
+            .footer {
+                margin-top: 2.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1.4rem;
+                font-size: 0.6rem;
+                color: rgba(255, 255, 255, 0.10);
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+
+            .footer span {
+                display: flex;
+                align-items: center;
+                gap: 4px;
+            }
+
+            .footer .dot {
+                width: 3px;
+                height: 3px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.06);
+            }
+
+            .footer .gradient-dot {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--main_gradient);
+                display: inline-block;
+            }
+
+            /* ============================================================
+               RESPONSIVE
+               ============================================================ */
+            @media (max-width: 520px) {
+                .card {
+                    padding: 1.8rem 1.2rem 2.2rem;
+                    border-radius: 32px;
+                }
+
+                .card::before {
+                    border-radius: 34px;
+                }
+                .card::after {
+                    border-radius: 32px;
+                }
+
+                .app-name {
+                    font-size: 1.7rem;
+                }
+
+                .logo-wrap img {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 24px;
+                    padding: 8px;
+                }
+
+                .logo-wrap::after {
+                    border-radius: 30px;
+                }
+
+                .info-grid {
+                    grid-template-columns: 1fr 1fr 1fr;
+                    gap: 0.4rem;
+                }
+
+                .info-value {
+                    font-size: 0.85rem;
+                }
+
+                .size-number {
+                    font-size: 2.8rem;
+                }
+
+                .size-number small {
+                    font-size: 1.1rem;
+                }
+
+                .download-btn {
+                    font-size: 1rem;
+                    padding: 1rem 1.2rem;
+                    border-radius: 50px;
+                }
+
+                .download-btn svg {
+                    width: 18px;
+                    height: 18px;
+                }
+
+                .footer {
+                    flex-wrap: wrap;
+                    gap: 0.6rem;
+                }
+            }
+
+            @media (max-width: 400px) {
+                .info-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                .info-item:last-child {
+                    grid-column: span 2;
+                }
+
+                .app-name {
+                    font-size: 1.4rem;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- ====== SPARKLES ====== -->
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+
+        <!-- ====== CARD ====== -->
+        <div class="card">
+
+            <!-- LOGO -->
+            <div class="logo-wrap">
+                <img src="logo.png" alt="JaiClub Hack Pro logo" width="100" height="100" />
+            </div>
+
+            <!-- APP NAME (gradient text) -->
+            <h1 class="app-name">JaiClub Navigator</h1>
+
+            <!-- INFO GRID -->
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Version</span>
+                    <span class="info-value">v1.1</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Size</span>
+                    <span class="info-value">6.25 MB</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Security</span>
+                    <span class="info-value">
+                        <span class="secure-badge">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                <path d="M9 12l2 2 4-4" />
+                            </svg>
+                            Secure
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- SIZE (gradient text) -->
+            <div class="size-block">
+                <div class="size-number">
+                    6.25<small>MB</small>
+                </div>
+                <div class="size-label">Download size</div>
+            </div>
+
+            <!-- DOWNLOAD BUTTON  (gradient bg) -->
+            <a href="jaiclub_hack_pro_v1.1.apk" class="download-btn" download>
+                <svg viewBox="0 0 24 24">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Download APK
+            </a>
+
+            <!-- FOOTER -->
+            <div class="footer">
+                <span><span class="gradient-dot"></span> Soomth work </span>
+                <span class="dot"></span>
+                <span><span class="gradient-dot"></span> Verified</span>
+                <span class="dot"></span>
+                <span><span class="gradient-dot"></span> 24/7 Live </span>
+            </div>
+
+        </div>
+    </body>
+</html>
